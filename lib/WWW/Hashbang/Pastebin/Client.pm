@@ -2,7 +2,7 @@ package WWW::Hashbang::Pastebin::Client;
 use strict;
 use warnings;
 # ABSTRACT: a client library for WWW::Hashbang::Pastebin websites
-our $VERSION = '0.001'; # VERSION
+our $VERSION = '0.002'; # VERSION
 use LWP::UserAgent;
 use Carp;
 use URI;
@@ -67,7 +67,7 @@ sub get {
         $id = $uri->path;
     }
     $id =~ s{^/}{};
-    $id =~ s{\.$}{};
+    $id =~ s{\+$}{};
 
     my $URI = URI->new_abs("/$id", $self->{url});
     my $get_response = $self->{ua}->get($URI);
@@ -96,7 +96,7 @@ WWW::Hashbang::Pastebin::Client - a client library for WWW::Hashbang::Pastebin w
 
 =head1 VERSION
 
-version 0.001
+version 0.002
 
 =head1 SYNOPSIS
 
@@ -158,6 +158,8 @@ Get paste content from the pastebin. Pass just the ID of the paste:
 This is a synonym for L</get>
 
 =head1 AVAILABILITY
+
+The project homepage is L<http://metacpan.org/release/WWW-Hashbang-Pastebin-Client/>.
 
 The latest version of this module is available from the Comprehensive Perl
 Archive Network (CPAN). Visit L<http://www.perl.com/CPAN/> to find a CPAN

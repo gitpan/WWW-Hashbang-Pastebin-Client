@@ -4,7 +4,7 @@
       "Mike Doherty <doherty@cpan.org>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Zilla version 4.300009, CPAN::Meta::Converter version 2.113640",
+   "generated_by" : "Dist::Zilla version 4.300012, CPAN::Meta::Converter version 2.120900",
    "license" : [
       "perl_5"
    ],
@@ -32,21 +32,21 @@
       },
       "runtime" : {
          "requires" : {
-            "Carp" : 0,
-            "Getopt::Long" : 0,
-            "LWP::UserAgent" : 0,
-            "Pod::Usage" : 0,
-            "URI" : 0,
+            "Carp" : "0",
+            "Getopt::Long" : "0",
+            "LWP::UserAgent" : "0",
+            "Pod::Usage" : "0",
+            "URI" : "0",
             "perl" : "v5.10.1",
-            "strict" : 0,
-            "warnings" : 0
+            "strict" : "0",
+            "warnings" : "0"
          }
       },
       "test" : {
          "requires" : {
-            "File::Find" : 0,
-            "File::Temp" : 0,
-            "Plack::Loader" : 0,
+            "File::Find" : "0",
+            "File::Temp" : "0",
+            "Plack::Loader" : "0",
             "Test::More" : "0.96"
          }
       }
@@ -56,12 +56,13 @@
       "bugtracker" : {
          "web" : "https://github.com/doherty/WWW-Hashbang-Pastebin-Client/issues"
       },
+      "homepage" : "http://metacpan.org/release/WWW-Hashbang-Pastebin-Client/",
       "repository" : {
          "type" : "git",
          "url" : "git://github.com/doherty/WWW-Hashbang-Pastebin-Client.git",
          "web" : "https://github.com/doherty/WWW-Hashbang-Pastebin-Client"
       }
    },
-   "version" : "0.001"
+   "version" : "0.002"
 }
 

@@ -12,7 +12,7 @@ configure_requires:
   ExtUtils::MakeMaker: 6.30
   Module::Build: 0.3601
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 4.300009, CPAN::Meta::Converter version 2.113640'
+generated_by: 'Dist::Zilla version 4.300012, CPAN::Meta::Converter version 2.120900'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -32,5 +32,6 @@ requires:
   warnings: 0
 resources:
   bugtracker: https://github.com/doherty/WWW-Hashbang-Pastebin-Client/issues
+  homepage: http://metacpan.org/release/WWW-Hashbang-Pastebin-Client/
   repository: git://github.com/doherty/WWW-Hashbang-Pastebin-Client.git
-version: 0.001
+version: 0.002

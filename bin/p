@@ -4,7 +4,7 @@ use strict;
 use warnings;
 # PODNAME: p
 # ABSTRACT: command-line read-write access to http://p.hashbang.ca
-our $VERSION = '0.001'; # VERSION
+our $VERSION = '0.002'; # VERSION
 
 use WWW::Hashbang::Pastebin::Client;
 use Getopt::Long;
@@ -52,7 +52,7 @@ p - command-line read-write access to http://p.hashbang.ca
 
 =head1 VERSION
 
-version 0.001
+version 0.002
 
 =head1 SYNOPSIS
 
@@ -98,6 +98,8 @@ Set the URL to a different site running L<WWW::Hashbang::Pastebin>.
 =back
 
 =head1 AVAILABILITY
+
+The project homepage is L<http://metacpan.org/release/WWW-Hashbang-Pastebin-Client/>.
 
 The latest version of this module is available from the Comprehensive Perl
 Archive Network (CPAN). Visit L<http://www.perl.com/CPAN/> to find a CPAN
