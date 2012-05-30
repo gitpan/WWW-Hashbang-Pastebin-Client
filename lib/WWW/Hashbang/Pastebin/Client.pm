@@ -2,22 +2,23 @@ package WWW::Hashbang::Pastebin::Client;
 use strict;
 use warnings;
 # ABSTRACT: a client library for WWW::Hashbang::Pastebin websites
-our $VERSION = '0.002'; # VERSION
-use LWP::UserAgent;
+our $VERSION = '0.003'; # VERSION
+
+use HTTP::Tiny;
 use Carp;
-use URI;
 
 
 sub new {
     my $class = shift;
     my %args = @_;
-    croak 'No url provided to interface with' unless $args{url} or $args{uri};
+    croak 'No pastebin URL provided' unless $args{url};
+    croak 'Pastebin must be an absolute URL' unless $args{url} =~ m{^http};
 
-    my $self = { url => $args{url} || $args{uri} };
-    $self->{ua} = LWP::UserAgent->new(
+    my $self = { url => $args{url} };
+    $self->{ua} = HTTP::Tiny->new(
         agent => __PACKAGE__ . '/'
             . (__PACKAGE__->VERSION ? __PACKAGE__->VERSION : 'dev')
-            . ' (https://metacpan.org/module/' . __PACKAGE__ . ')'
+            . ' (+https://metacpan.org/module/' . __PACKAGE__ . ')'
     );
 
     return bless $self, $class;
@@ -38,16 +39,14 @@ sub paste {
     }
     croak 'No paste content given' unless $args{paste};
 
-    my $post_response = $self->{ua}->post(
-        $self->{url}, {
-            p => $args{paste},
-        }
+    my $post_response = $self->{ua}->post_form(
+        $self->{url}, { p => $args{paste} }
     );
 
-    return $post_response->header('X-Pastebin-URL') || $post_response->decoded_content
-        if $post_response->is_success;
+    return $post_response->{headers}->{'X-Pastebin-URL'} || $post_response->{content}
+        if $post_response->{success};
 
-    die $post_response->status_line . ' ' . $post_response->decoded_content;
+    die $post_response->{status}, ' ' , $post_response->{reason}, ' ', $post_response->{content};
 }
 
 
@@ -62,19 +61,17 @@ sub get {
     my $id   = shift;
     croak 'No paste ID given' unless $id;
     
-    if ($id =~ m/$self->{url}/) {
-        my $uri = URI->new($id);
-        $id = $uri->path;
-    }
+    $id =~ s{^\Q$self->{url}\E}{} if ($id =~ m/\Q$self->{url}\E/);
     $id =~ s{^/}{};
     $id =~ s{\+$}{};
+    chomp $id;
 
-    my $URI = URI->new_abs("/$id", $self->{url});
+    my $URI = "$self->{url}/$id";
     my $get_response = $self->{ua}->get($URI);
 
-    return $get_response->decoded_content if $get_response->is_success;
+    return $get_response->{content} if $get_response->{success};
 
-    die $get_response->status_line;
+    die $get_response->{status}, ' ' , $get_response->{reason}, ' ', $get_response->{content};
 }
 
 
@@ -96,7 +93,7 @@ WWW::Hashbang::Pastebin::Client - a client library for WWW::Hashbang::Pastebin w
 
 =head1 VERSION
 
-version 0.002
+version 0.003
 
 =head1 SYNOPSIS
 

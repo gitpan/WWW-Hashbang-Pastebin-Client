@@ -4,7 +4,7 @@ use strict;
 use warnings;
 # PODNAME: p
 # ABSTRACT: command-line read-write access to http://p.hashbang.ca
-our $VERSION = '0.002'; # VERSION
+our $VERSION = '0.003'; # VERSION
 
 use WWW::Hashbang::Pastebin::Client;
 use Getopt::Long;
@@ -52,7 +52,7 @@ p - command-line read-write access to http://p.hashbang.ca
 
 =head1 VERSION
 
-version 0.002
+version 0.003
 
 =head1 SYNOPSIS
 

@@ -4,7 +4,7 @@
       "Mike Doherty <doherty@cpan.org>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Zilla version 4.300012, CPAN::Meta::Converter version 2.120900",
+   "generated_by" : "Dist::Zilla version 4.300016, CPAN::Meta::Converter version 2.120630",
    "license" : [
       "perl_5"
    ],
@@ -34,9 +34,8 @@
          "requires" : {
             "Carp" : "0",
             "Getopt::Long" : "0",
-            "LWP::UserAgent" : "0",
+            "HTTP::Tiny" : "0",
             "Pod::Usage" : "0",
-            "URI" : "0",
             "perl" : "v5.10.1",
             "strict" : "0",
             "warnings" : "0"
@@ -46,7 +45,6 @@
          "requires" : {
             "File::Find" : "0",
             "File::Temp" : "0",
-            "Plack::Loader" : "0",
             "Test::More" : "0.96"
          }
       }
@@ -63,6 +61,6 @@
          "web" : "https://github.com/doherty/WWW-Hashbang-Pastebin-Client"
       }
    },
-   "version" : "0.002"
+   "version" : "0.003"
 }
 
